@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: student-ecosystem-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGO_URI
+        sync: false
+      - key: COLLEGE_DOMAIN
+        value: "@skcet.ac.in"
+      - key: UPLOAD_DIR
+        value: uploads
