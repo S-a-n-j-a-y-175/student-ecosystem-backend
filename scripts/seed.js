@@ -2,9 +2,16 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import fs from "fs";
 import path from "path";
+import dns from "dns";
 import { fileURLToPath } from "url";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import dotenv from "dotenv";
+
+try {
+  dns.setServers(["8.8.8.8", "1.1.1.1"]);
+} catch (e) {
+  // Ignore in environments where custom DNS servers cannot be set
+}
 
 import User from "../models/User.js";
 import Class from "../models/Class.js";
