@@ -38,6 +38,16 @@ app.use("/api/subjects", subjectRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/api/admin", adminRoutes);
 
+// Root welcome endpoint
+app.get("/", (req, res) => {
+  res.json({
+    status: "online",
+    service: "Student Ecosystem - College Notes Sharing Platform API",
+    documentation: "https://github.com/S-a-n-j-a-y-175/student-ecosystem-backend",
+    healthCheck: "/api/health",
+  });
+});
+
 // Health check endpoint
 app.get("/api/health", (req, res) => {
   res.json({
